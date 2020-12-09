@@ -5,10 +5,10 @@ public class Menu {
 	private int menu_id;
 	private String category_name;
 	private String item_name;
-	private float price;
+	private double price;
 	
 	
-	public Menu(int menu_id, String category_name, String item_name, float price) {
+	public Menu(int menu_id, String category_name, String item_name, double price) {
 		super();
 		this.menu_id = menu_id;
 		this.category_name = category_name;
@@ -17,7 +17,7 @@ public class Menu {
 	}
 
 
-	public Menu(String category_name, String item_name, float price) {
+	public Menu(String category_name, String item_name, double price) {
 		super();
 		this.category_name = category_name;
 		this.item_name = item_name;
@@ -25,7 +25,7 @@ public class Menu {
 	}
 
 
-	public Menu(String category_name, String item_name, float price, int menu_id) {
+	public Menu(String category_name, String item_name, double price, int menu_id) {
 		super();
 		this.category_name = category_name;
 		this.item_name = item_name;
@@ -64,12 +64,12 @@ public class Menu {
 	}
 
 
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

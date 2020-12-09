@@ -110,7 +110,7 @@ public class Location {
 
 	@Override
 	public String toString() {
-		return "\nLocation ID " + location_id + " located at:\n" + address + "\n" + city + ", " + state + " " + zip
+		return "\nLocation ID " + location_id + "\n" + name + "\n" + address + "\n" + city + ", " + state + " " + zip
 				+ "\nPhone Number: " + phone;
 	}
 

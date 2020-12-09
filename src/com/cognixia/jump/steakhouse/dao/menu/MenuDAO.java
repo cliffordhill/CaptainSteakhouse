@@ -25,7 +25,7 @@ public class MenuDAO implements DAO<Menu> {
 				int index = rs.getInt("menu_id");
 				String category = rs.getString("category_name");
 				String item = rs.getString("item_name");
-				float price = rs.getInt("price");
+				double price = rs.getDouble("price");
 
 				// Make equivalent Java Bean
 				Menu menu = new Menu(index, category, item, price);
@@ -51,7 +51,7 @@ public class MenuDAO implements DAO<Menu> {
 			int index = rs.getInt("menu_id");
 			String category = rs.getString("category_name");
 			String item = rs.getString("item_name");
-			float price = rs.getInt("price");
+			double price = rs.getDouble("price");
 			Menu menu = new Menu(index, category, item, price);
 			return menu;
 		} catch (SQLException e) {
@@ -73,7 +73,7 @@ public class MenuDAO implements DAO<Menu> {
 			PreparedStatement pstmt = conn.prepareStatement("insert into menu(category_name, item_name, price) values(?, ?, ?)");
 			pstmt.setString(1, menu.getCategory_name());
 			pstmt.setString(2, menu.getItem_name());
-			pstmt.setFloat(3, menu.getPrice());
+			pstmt.setDouble(3, menu.getPrice());
 
 			int i = pstmt.executeUpdate();
 
@@ -105,10 +105,10 @@ public class MenuDAO implements DAO<Menu> {
 	public boolean update(Menu menu) {
 		// update
 		try (PreparedStatement pstmt = conn
-				.prepareStatement("update chef set category_name = ?, item_name = ?, price = ? where menu_id = ?")) {
+				.prepareStatement("update menu set category_name = ?, item_name = ?, price = ? where menu_id = ?")) {
 			pstmt.setString(1, menu.getCategory_name());
 			pstmt.setString(2, menu.getItem_name());
-			pstmt.setFloat(3, menu.getPrice());
+			pstmt.setDouble(3, menu.getPrice());
 			pstmt.setInt(4, menu.getMenu_id());
 
 			if (pstmt.executeUpdate() > 0) {

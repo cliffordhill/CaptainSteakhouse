@@ -44,7 +44,7 @@ public class ConnManager {
 				System.out.println("getConnection failed. Still null.");
 			}
 		} else {
-			System.out.println("getConnection wasn't null. No makeConnection attempt.");
+			System.out.println("\ngetConnection wasn't null. No makeConnection attempt.");
 		}
 		return connection;
 	}
