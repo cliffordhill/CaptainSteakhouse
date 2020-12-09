@@ -1,4 +1,4 @@
-package com.cognixia.jump.steakhouse.dao;
+package com.cognixia.jump.steakhouse.dao.location;
 
 public class Location {
 
