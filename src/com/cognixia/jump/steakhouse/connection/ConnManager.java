@@ -1,4 +1,4 @@
-package com.cognixia.jump.connection;
+package com.cognixia.jump.steakhouse.connection;
 
 import java.io.FileInputStream;
 import java.io.IOException;
