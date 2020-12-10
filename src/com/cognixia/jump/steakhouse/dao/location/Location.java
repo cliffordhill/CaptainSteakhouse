@@ -58,6 +58,16 @@ public class Location {
 		this.location_id = location_id;
 	}
 
+	public Location(String name, String address, String city, String state, int zip, String phone) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone = phone;
+	}
+
 	public int getId() {
 		return location_id;
 	}

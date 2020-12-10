@@ -21,13 +21,11 @@ public class MenuDAO implements DAO<Menu> {
 		try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("select * from menu");) {
 			List<Menu> menuTable = new ArrayList<>();
 			while (rs.next()) {
-				// Getting SQL Attributes for each Tuple
 				int index = rs.getInt("menu_id");
 				String category = rs.getString("category_name");
 				String item = rs.getString("item_name");
 				double price = rs.getDouble("price");
 
-				// Make equivalent Java Bean
 				Menu menu = new Menu(index, category, item, price);
 				menuTable.add(menu);
 			}
@@ -58,12 +56,6 @@ public class MenuDAO implements DAO<Menu> {
 			System.out.println("Menu item with id= " + id + " not found.");
 			e.printStackTrace();
 		}
-		return null;
-	}
-
-	@Override
-	public Menu getByAttribute(String attribute, String value) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -119,6 +111,12 @@ public class MenuDAO implements DAO<Menu> {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public Menu getByAttribute(String attribute, String value) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

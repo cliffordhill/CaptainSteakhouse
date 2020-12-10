@@ -75,10 +75,13 @@ public class LocationDAO implements DAO<Location> {
 	@Override
 	public boolean add(Location location) {
 		try {
-			PreparedStatement pstmt = conn.prepareStatement("insert into location(name, address, zip) values(?, ?, ?)");
-			pstmt.setString(1, location.getName());
-			pstmt.setString(2, location.getAddress());
-			pstmt.setInt(3, location.getZip());
+			PreparedStatement pstmt = conn.prepareStatement("insert into location(name, address, city, state, zip, phone) values(?, ?, ?, ?, ?, ?)");
+			pstmt.setString(2, location.getName());
+			pstmt.setString(3, location.getAddress());
+			pstmt.setString(4, location.getCity());
+			pstmt.setString(5, location.getState());
+			pstmt.setInt(6, location.getZip());
+			pstmt.setString(7, location.getPhone());
 
 			int i = pstmt.executeUpdate();
 
@@ -110,11 +113,14 @@ public class LocationDAO implements DAO<Location> {
 	public boolean update(Location location) {
 		// update
 		try (PreparedStatement pstmt = conn
-				.prepareStatement("update location set city = ?, state = ?, phone = ? where location_id = ?")) {
-			pstmt.setString(1, location.getCity());
-			pstmt.setString(2, location.getState());
-			pstmt.setString(3, location.getPhone());
-			pstmt.setInt(4, location.getId());
+				.prepareStatement("update location set name = ?, address = ?, city = ?, state = ?, zip = ?, phone = ? where location_id = ?")) {
+			pstmt.setString(1, location.getName());
+			pstmt.setString(2, location.getAddress());
+			pstmt.setString(3, location.getCity());
+			pstmt.setString(4, location.getState());
+			pstmt.setInt(5, location.getZip());
+			pstmt.setString(6, location.getPhone());
+			pstmt.setInt(7, location.getId());
 
 			if (pstmt.executeUpdate() > 0) {
 				return true;

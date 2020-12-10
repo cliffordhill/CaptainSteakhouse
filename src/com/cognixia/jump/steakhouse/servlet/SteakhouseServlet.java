@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cognixia.jump.steakhouse.connection.ConnManager;
+import com.cognixia.jump.steakhouse.dao.chef.Chef;
 import com.cognixia.jump.steakhouse.dao.chef.ChefDAO;
 import com.cognixia.jump.steakhouse.dao.location.Location;
 import com.cognixia.jump.steakhouse.dao.location.LocationDAO;
+import com.cognixia.jump.steakhouse.dao.menu.Menu;
 import com.cognixia.jump.steakhouse.dao.menu.MenuDAO;
+import com.cognixia.jump.steakhouse.dao.user.User;
 import com.cognixia.jump.steakhouse.dao.user.UserDAO;
 
 @WebServlet("/")
@@ -149,7 +152,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Deleted location ID#" + id);
 		};
 		
-		response.sendRedirect("list");
+		response.sendRedirect("/CaptainSteakHouse");
 	}
 	
 	private void goToEditLocationForm(HttpServletRequest request, HttpServletResponse response) 
@@ -181,10 +184,10 @@ public class SteakhouseServlet extends HttpServlet {
 		Location location = new Location(location_id, name, address, city, state, zip, phone);
 		
 		if(locationDAO.update(location)) {
-			System.out.println("UPDATED Location ID#" + location_id + " as\n" + location);
+			System.out.println("Updated Location ID#" + location_id + " as\n" + location);
 		};
 		
-		response.sendRedirect("list");
+		response.sendRedirect("/CaptainSteakHouse");
 		
 	}
 	
@@ -200,7 +203,6 @@ public class SteakhouseServlet extends HttpServlet {
 	private void addNewLocation(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			
-		int location_id = Integer.parseInt(request.getParameter("location_id"));
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String city = request.getParameter("city");
@@ -208,10 +210,259 @@ public class SteakhouseServlet extends HttpServlet {
 		int zip = Integer.parseInt(request.getParameter("zip"));
 		String phone = request.getParameter("phone");
 		
-		Location location = new Location(location_id, name, address, city, state, zip, phone);
+		Location location = new Location(name, address, city, state, zip, phone);
 			
 			if(locationDAO.add(location)) {
-				System.out.println("CREATED PRODUCT" + " as\n" + location);
+				System.out.println("Created Location" + " as\n" + location);
+			};
+			
+			response.sendRedirect("/CaptainSteakHouse");
+			
+		}
+	
+	private void listMenu(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		List<Menu> allMenu = menuDAO.getAll();
+		System.out.println("called, allMenu = " + allMenu);
+		
+		request.setAttribute("allMenu", allMenu);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("menu-list.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void deleteMenu(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		if (menuDAO.deleteById(id)) {
+			System.out.println("Deleted menu ID#" + id);
+		};
+		
+		response.sendRedirect("/CaptainSteakHouse");
+	}
+	
+	private void goToEditMenuForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		Menu menu = menuDAO.getById(id);
+		
+		request.setAttribute("menu", menu);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("menu-form.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void editMenu (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		int menu_id = Integer.parseInt(request.getParameter("menu_id"));
+		String category = request.getParameter("category_name");
+		String item = request.getParameter("item_name");
+		double price = Double.parseDouble(request.getParameter("price"));
+
+		Menu menu = new Menu(menu_id, category, item, price);
+		
+		if(menuDAO.update(menu)) {
+			System.out.println("Updated menu ID#" + menu_id + " as\n" + menu);
+		};
+		
+		response.sendRedirect("/CaptainSteakHouse");
+		
+	}
+	
+	private void goToNewMenuForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("menu-form.jsp");
+		
+		dispatcher.forward(request, response);
+		
+	}
+	
+	private void addNewMenu(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			
+		String category = request.getParameter("category_name");
+		String item = request.getParameter("item_name");
+		double price = Double.parseDouble(request.getParameter("price"));
+
+		Menu menu = new Menu(category, item, price);
+			
+			if(menuDAO.add(menu)) {
+				System.out.println("Created menu item" + " as\n" + menu);
+			};
+			
+			response.sendRedirect("/CaptainSteakHouse");
+			
+		}
+	
+	private void listChefs(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		List<Chef> allChefs = chefDAO.getAll();
+		System.out.println("called, allChefs = " + allChefs);
+		
+		request.setAttribute("allChefs", allChefs);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("chef-list.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void deleteChef(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		if (chefDAO.deleteById(id)) {
+			System.out.println("Deleted chef ID#" + id);
+		};
+		
+		response.sendRedirect("list");
+	}
+	
+	private void goToEditChefForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		Chef chef = chefDAO.getById(id);
+		
+		request.setAttribute("chef", chef);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("chef-form.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void editChef (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		int index = Integer.parseInt(request.getParameter("chef_id"));
+		String firstName = request.getParameter("first_name");
+		String lastName = request.getParameter("last_name");
+		int location = Integer.parseInt(request.getParameter("location_id"));
+
+		Chef chef = new Chef(index, firstName, lastName, location);
+		
+		if(chefDAO.update(chef)) {
+			System.out.println("UPDATED CHEF ID#" + index + " as\n" + chef);
+		};
+		
+		response.sendRedirect("list");
+		
+	}
+	
+	private void goToNewChefForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("chef-form.jsp");
+		
+		dispatcher.forward(request, response);
+		
+	}
+	
+	private void addNewChef(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			
+		String firstName = request.getParameter("first_name");
+		String lastName = request.getParameter("last_name");
+		int location = Integer.parseInt(request.getParameter("location_id"));
+
+		Chef chef = new Chef(firstName, lastName, location);
+			
+			if(chefDAO.add(chef)) {
+				System.out.println("CREATED CHEF" + " as\n" + chef);
+			};
+			
+			response.sendRedirect("list");
+			
+		}
+	
+	private void listUsers(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		List<User> allUsers = userDAO.getAll();
+		System.out.println("called, allUsers = " + allUsers);
+		
+		request.setAttribute("allUsers", allUsers);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		if (userDAO.deleteById(id)) {
+			System.out.println("Deleted user ID#" + id);
+		};
+		
+		response.sendRedirect("list");
+	}
+	
+	private void goToEditUserForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		User user = userDAO.getById(id);
+		
+		request.setAttribute("user", user);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void editUser (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		int index = Integer.parseInt(request.getParameter("user_id"));
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		int admin = Integer.parseInt(request.getParameter("is_admin"));
+
+		User user = new User(index, username, password, admin);
+		
+		if(userDAO.update(user)) {
+			System.out.println("UPDATED USER ID#" + index + " as\n" + user);
+		};
+		
+		response.sendRedirect("list");
+		
+	}
+	
+	private void goToNewUserForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		
+		dispatcher.forward(request, response);
+		
+	}
+	
+	private void addNewUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		int admin = Integer.parseInt(request.getParameter("is_admin"));
+
+		User user = new User(username, password, admin);
+			
+			if(userDAO.add(user)) {
+				System.out.println("CREATED USER" + " as\n" + user);
 			};
 			
 			response.sendRedirect("list");
