@@ -24,10 +24,10 @@
 		    <ul class="navbar-nav">
 		    
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="<%= request.getContextPath() %>/list">View</a>
+		        	<a class="nav-link" href="<%= request.getContextPath() %>/list_locations">Locations</a>
 		      	</li>
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="<%= request.getContextPath() %>/new">Add</a>
+		        	<a class="nav-link" href="<%= request.getContextPath() %>/new">Add (Don't click me or else...)</a>
 		      	</li>
 		      	
 		    </ul>
