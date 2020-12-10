@@ -28,10 +28,10 @@
 					<td><c:out value="${ menu.item_name}" /></td>
 					<td><c:out value="${ menu.price}" /></td>
 					<td><a
-						href="edit_location?id=<c:out value='${ menu.menu_id }' />">
+						href="edit_menu?id=<c:out value='${ menu.menu_id }' />">
 							<button class="btn btn-primary">Edit</button>
 					</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="delete_location?id=<c:out value='${ menu.menu_id }' />">
+						href="delete_menu?id=<c:out value='${ menu.menu_id }' />">
 							<button class="btn btn-danger">Delete</button>
 					</a></td>
 				</tr>

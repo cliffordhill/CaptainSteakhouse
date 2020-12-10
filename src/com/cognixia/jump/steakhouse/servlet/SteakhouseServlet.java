@@ -240,7 +240,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Deleted menu ID#" + id);
 		};
 		
-		response.sendRedirect("/CaptainSteakHouseProject");
+		response.sendRedirect("list_menu");
 	}
 	
 	private void goToEditMenuForm(HttpServletRequest request, HttpServletResponse response) 
@@ -271,7 +271,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Updated menu ID#" + menu_id + " as\n" + menu);
 		};
 		
-		response.sendRedirect("/CaptainSteakHouseProject");
+		response.sendRedirect("list_menu");
 		
 	}
 	
@@ -297,7 +297,7 @@ public class SteakhouseServlet extends HttpServlet {
 				System.out.println("Created menu item" + " as\n" + menu);
 			};
 			
-			response.sendRedirect("/CaptainSteakHouseProject");
+			response.sendRedirect("list_menu");
 			
 		}
 	
@@ -323,7 +323,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Deleted chef ID#" + id);
 		};
 		
-		response.sendRedirect("list");
+		response.sendRedirect("list_chefs");
 	}
 	
 	private void goToEditChefForm(HttpServletRequest request, HttpServletResponse response) 
@@ -346,15 +346,14 @@ public class SteakhouseServlet extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("chef_id"));
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
-		int location = Integer.parseInt(request.getParameter("location_id"));
 
-		Chef chef = new Chef(index, firstName, lastName, location);
+		Chef chef = new Chef(index, firstName, lastName);
 		
 		if(chefDAO.update(chef)) {
-			System.out.println("UPDATED CHEF ID#" + index + " as\n" + chef);
+			System.out.println("UPDATED CHEF ID#"  +index+ " as\n" + chef);
 		};
 		
-		response.sendRedirect("list");
+		response.sendRedirect("list_chefs");
 		
 	}
 	
@@ -372,15 +371,14 @@ public class SteakhouseServlet extends HttpServlet {
 			
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
-		int location = Integer.parseInt(request.getParameter("location_id"));
 
-		Chef chef = new Chef(firstName, lastName, location);
+		Chef chef = new Chef(firstName, lastName);
 			
 			if(chefDAO.add(chef)) {
 				System.out.println("CREATED CHEF" + " as\n" + chef);
 			};
 			
-			response.sendRedirect("list");
+			response.sendRedirect("list_chefs");
 			
 		}
 	
@@ -406,7 +404,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Deleted user ID#" + id);
 		};
 		
-		response.sendRedirect("list");
+		response.sendRedirect("list_users");
 	}
 	
 	private void goToEditUserForm(HttpServletRequest request, HttpServletResponse response) 
@@ -429,15 +427,14 @@ public class SteakhouseServlet extends HttpServlet {
 		int index = Integer.parseInt(request.getParameter("user_id"));
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		int admin = Integer.parseInt(request.getParameter("is_admin"));
 
-		User user = new User(index, username, password, admin);
+		User user = new User(index, username, password);
 		
 		if(userDAO.update(user)) {
 			System.out.println("UPDATED USER ID#" + index + " as\n" + user);
 		};
 		
-		response.sendRedirect("list");
+		response.sendRedirect("list_users");
 		
 	}
 	
@@ -455,15 +452,14 @@ public class SteakhouseServlet extends HttpServlet {
 			
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		int admin = Integer.parseInt(request.getParameter("is_admin"));
 
-		User user = new User(username, password, admin);
+		User user = new User(username, password);
 			
 			if(userDAO.add(user)) {
 				System.out.println("CREATED USER" + " as\n" + user);
 			};
 			
-			response.sendRedirect("list");
+			response.sendRedirect("list_users");
 			
 		}
 

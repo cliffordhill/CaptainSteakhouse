@@ -30,6 +30,19 @@ public class Chef {
 		this.location_id = location_id;
 	}
 
+	public Chef(String first_name, String last_name) {
+		super();
+		this.first_name = first_name;
+		this.last_name = last_name;
+	}
+
+	public Chef(int chef_id, String first_name, String last_name) {
+		super();
+		this.chef_id = chef_id;
+		this.first_name = first_name;
+		this.last_name = last_name;
+	}
+
 	public int getChef_id() {
 		return chef_id;
 	}

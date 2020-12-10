@@ -26,10 +26,10 @@
 					<td><c:out value="${ user.username }" /></td>
 					<td><c:out value="${ user.password }" /></td>
 					<td><a
-						href="edit_user?id=<c:out value='${ user.id }' />">
+						href="edit_user?id=<c:out value='${ user.user_id }' />">
 							<button class="btn btn-primary">Edit</button>
 					</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="delete_user?id=<c:out value='${ user.id }' />">
+						href="delete_user?id=<c:out value='${ user.user_id }' />">
 							<button class="btn btn-danger">Delete</button>
 					</a></td>
 				</tr>

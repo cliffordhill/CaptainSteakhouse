@@ -20,7 +20,7 @@
 				
 		<%-- hidden input we can use to pass in a value we want --%>
 		<c:if test="${user != null}">
-			<input type="hidden" name="user_id" value="<c:out value='${user.id}' />" />
+			<input type="hidden" name="user_id" value="<c:out value='${user.user_id}' />" />
 		</c:if>
 				
 		<!-- item field -->

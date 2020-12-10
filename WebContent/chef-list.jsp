@@ -15,6 +15,8 @@
 			<tr>
 				<th scope="col">First Name</th>
 				<th scope="col">Last Name</th>
+				<th scope="col"></th>
+				
 			</tr>
 		</thead>
 
@@ -26,10 +28,10 @@
 					<td><c:out value="${ chef.last_name }" /></td>
 				
 					<td><a
-						href="edit_chef?id=<c:out value='${ chef.id }' />">
+						href="edit_chef?id=<c:out value='${ chef.chef_id }' />">
 							<button class="btn btn-primary">Edit</button>
 					</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
-						href="delete_chef?id=<c:out value='${ chef.id }' />">
+						href="delete_chef?id=<c:out value='${ chef.chef_id }' />">
 							<button class="btn btn-danger">Delete</button>
 					</a></td>
 				</tr>

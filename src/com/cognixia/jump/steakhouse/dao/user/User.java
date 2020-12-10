@@ -30,6 +30,19 @@ public class User {
 		this.is_admin = is_admin;
 	}
 
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
+	public User(int user_id, String username, String password) {
+		super();
+		this.user_id = user_id;
+		this.username = username;
+		this.password = password;
+	}
+
 	public int getUser_id() {
 		return user_id;
 	}
