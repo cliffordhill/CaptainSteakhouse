@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognixia.jump.steakhouse.connection.ConnManager;
 import com.cognixia.jump.steakhouse.dao.chef.ChefDAO;
+import com.cognixia.jump.steakhouse.dao.location.Location;
 import com.cognixia.jump.steakhouse.dao.location.LocationDAO;
 import com.cognixia.jump.steakhouse.dao.menu.MenuDAO;
 import com.cognixia.jump.steakhouse.dao.user.UserDAO;
@@ -48,52 +49,175 @@ public class SteakhouseServlet extends HttpServlet {
 		String action = request.getServletPath();
 		
 		switch (action) {
-		case "/account":
-			account(request, response);
+		case "/list_locations":
+			listLocations(request, response);
 			break;
-		case "/location":
-			location(request, response);
+		case "/edit_location":
+			goToEditLocationForm(request, response);
 			break;
-		case "/deleteMenuItem":
-			deleteMenuItem(request, response);
-			break;
-		case "/deleteLocation":
-			deleteLocation(request, response);
-			break;
-		case "/deleteUser":
-			deleteUser(request, response);
-			break;
-		case "/deleteChef":
-			deleteChef(request, response);
-			break;
-		case "/editMenuItem":
-			editMenuItem(request, response);
-			break;
-		case "/editLocation":
+		case "/update_location":
 			editLocation(request, response);
 			break;
-		case "/editUser":
-			editUser(request, response);
+		case "/new_location":
+			goToNewLocationForm(request, response);
 			break;
-		case "/editChef":
+		case "/insert_location":
+			addNewLocation(request, response);
+			break;
+		case "/delete_location":
+			deleteLocation(request, response);
+			break;
+		case "/list_menu":
+			listMenu(request, response);
+			break;
+		case "/edit_menu":
+			goToEditMenuForm(request, response);
+			break;
+		case "/update_menu":
+			editMenu(request, response);
+			break;
+		case "/new_menu":
+			goToNewMenuForm(request, response);
+			break;
+		case "/insert_menu":
+			addNewMenu(request, response);
+			break;
+		case "/delete_menu":
+			deleteMenu(request, response);
+			break;
+		case "/list_chefs":
+			listChefs(request, response);
+			break;
+		case "/edit_chef":
+			goToEditChefForm(request, response);
+			break;
+		case "/update_chef":
 			editChef(request, response);
 			break;
-		case "/update":
-			editProduct(request, response);
+		case "/new_chef":
+			goToNewChefForm(request, response);
 			break;
-		case "/new":
-			goToNewProductForm(request, response);
+		case "/insert_chef":
+			addNewChef(request, response);
 			break;
-		case "/insert":
-			addNewProduct(request, response);
+		case "/delete_chef":
+			deleteChef(request, response);
 			break;
-
+		case "/list_users":
+			listUsers(request, response);
+			break;
+		case "/edit_user":
+			goToEditUserForm(request, response);
+			break;
+		case "/update_user":
+			editUser(request, response);
+			break;
+		case "/new_user":
+			goToNewUserForm(request, response);
+			break;
+		case "/insert_user":
+			addNewUser(request, response);
+			break;
+		case "/delete_user":
+			deleteUser(request, response);
+			break;
 		default:  // default will just go to our index.jsp page
 			response.sendRedirect("/CaptainSteakHouse");
 			break;
 		}
 	}
 	
+	private void listLocations(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		List<Location> allLocations = locationDAO.getAll();
+		System.out.println("called, allLocations = " + allLocations);
+		
+		request.setAttribute("allLocations", allLocations);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("location-list.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void deleteLocation(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		if (locationDAO.deleteById(id)) {
+			System.out.println("Deleted location ID#" + id);
+		};
+		
+		response.sendRedirect("list");
+	}
+	
+	private void goToEditLocationForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		Location location = locationDAO.getById(id);
+		
+		request.setAttribute("location", location);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("location-form.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	private void editLocation (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+		int location_id = Integer.parseInt(request.getParameter("location_id"));
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		int zip = Integer.parseInt(request.getParameter("zip"));
+		String phone = request.getParameter("phone");
+		
+		Location location = new Location(location_id, name, address, city, state, zip, phone);
+		
+		if(locationDAO.update(location)) {
+			System.out.println("UPDATED Location ID#" + location_id + " as\n" + location);
+		};
+		
+		response.sendRedirect("list");
+		
+	}
+	
+	private void goToNewLocationForm(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("location-form.jsp");
+		
+		dispatcher.forward(request, response);
+		
+	}
+	
+	private void addNewLocation(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			
+		int location_id = Integer.parseInt(request.getParameter("location_id"));
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		int zip = Integer.parseInt(request.getParameter("zip"));
+		String phone = request.getParameter("phone");
+		
+		Location location = new Location(location_id, name, address, city, state, zip, phone);
+			
+			if(locationDAO.add(location)) {
+				System.out.println("CREATED PRODUCT" + " as\n" + location);
+			};
+			
+			response.sendRedirect("list");
+			
+		}
+
 	public void destroy() {
 		try {
 			ConnManager.getConnection().close();
