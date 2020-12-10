@@ -76,12 +76,12 @@ public class LocationDAO implements DAO<Location> {
 	public boolean add(Location location) {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement("insert into location(name, address, city, state, zip, phone) values(?, ?, ?, ?, ?, ?)");
-			pstmt.setString(2, location.getName());
-			pstmt.setString(3, location.getAddress());
-			pstmt.setString(4, location.getCity());
-			pstmt.setString(5, location.getState());
-			pstmt.setInt(6, location.getZip());
-			pstmt.setString(7, location.getPhone());
+			pstmt.setString(1, location.getName());
+			pstmt.setString(2, location.getAddress());
+			pstmt.setString(3, location.getCity());
+			pstmt.setString(4, location.getState());
+			pstmt.setInt(5, location.getZip());
+			pstmt.setString(6, location.getPhone());
 
 			int i = pstmt.executeUpdate();
 

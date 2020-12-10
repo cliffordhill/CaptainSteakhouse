@@ -13,7 +13,7 @@
 		</c:if>
 
 		<c:if test="${ location == null }">
-			<form action="/insert_location" method="get">
+			<form action="insert_location" method="get">
 			<h1>Create Location</h1>
 		</c:if>
 				

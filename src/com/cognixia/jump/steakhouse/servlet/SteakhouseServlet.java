@@ -150,7 +150,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Deleted location ID#" + id);
 		};
 		
-		response.sendRedirect("/CaptainSteakHouse");
+		response.sendRedirect("list_locations");
 	}
 	
 	private void goToEditLocationForm(HttpServletRequest request, HttpServletResponse response) 
@@ -185,7 +185,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Updated Location ID#" + location_id + " as\n" + location);
 		};
 		
-		response.sendRedirect("list-locations");
+		response.sendRedirect("list_locations");
 		
 	}
 	
@@ -214,7 +214,7 @@ public class SteakhouseServlet extends HttpServlet {
 				System.out.println("Created Location" + " as\n" + location);
 			};
 			
-			response.sendRedirect("/CaptainSteakHouse");
+			response.sendRedirect("/CaptainSteakHouseProject");
 			
 		}
 	
@@ -240,7 +240,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Deleted menu ID#" + id);
 		};
 		
-		response.sendRedirect("/CaptainSteakHouse");
+		response.sendRedirect("/CaptainSteakHouseProject");
 	}
 	
 	private void goToEditMenuForm(HttpServletRequest request, HttpServletResponse response) 
@@ -271,7 +271,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Updated menu ID#" + menu_id + " as\n" + menu);
 		};
 		
-		response.sendRedirect("/CaptainSteakHouse");
+		response.sendRedirect("/CaptainSteakHouseProject");
 		
 	}
 	
@@ -297,7 +297,7 @@ public class SteakhouseServlet extends HttpServlet {
 				System.out.println("Created menu item" + " as\n" + menu);
 			};
 			
-			response.sendRedirect("/CaptainSteakHouse");
+			response.sendRedirect("/CaptainSteakHouseProject");
 			
 		}
 	
