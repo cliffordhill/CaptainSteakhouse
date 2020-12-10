@@ -3,35 +3,60 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<body style="background-color:brown;">
 <head>
-<meta charset="UTF-8">
-<title>Product Catalog</title>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+<head>
+<meta charset="ISO-8859-1">
+<title>The Captain's Steakhouse</title>
+<link rel="stylesheet" href="SteakHouse.css" type="text/css" />
 </head>
+<body class="container-fluid" style="overflow-x: scroll">
+	<!-- Navigation Bar at top in nav -->
+	<div class="topnav">
 
-<body>
+		<a class="active"> The Captain's <br>Steakhouse
+		</a> <a href="#home">Home</a>
 
-<header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  		<a class="navbar-brand" href="<%= request.getContextPath() %>/">Product Catalog</a>
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    		<span class="navbar-toggler-icon"></span>
-  		</button>
-  		<div class="collapse navbar-collapse" id="navbarNav">
-  		
-		    <ul class="navbar-nav">
-		    
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="<%= request.getContextPath() %>/list_locations">Locations</a>
-		      	</li>
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="<%= request.getContextPath() %>/new">Add (Don't click me or else...)</a>
-		      	</li>
-		      	
-		    </ul>
-		    
-  		</div>
-	</nav>
-</header>
+		<li class="nav -item">
+			<a class="nav-link" href="<%= request.getContextPath() %>/list_locations">Locations</a>
+			</li>
+					<li class="nav -item">
+			<a class="nav-link" href="<%= request.getContextPath() %>/list_Menu">Menu</a>
+			</li>
+					<li class="nav -item">
+			<a class="nav-link" href="<%= request.getContextPath() %>/list_Chefs">Chefs</a>
+			</li>
+		<li class="nav -item">
+			<a class="nav-link" href="<%= request.getContextPath() %>/list_Chefs">Users</a>
+			</li>
+
+	</div>
+		     
+<main>
+		<h1>Enjoy our food!</h1>
+
+		<!-- Slideshow container -->
+		<div class="slideshow-container">
+
+			<!-- Full-width images with number and caption text -->
+			<div class="mySlides fade">
+				<img
+					src="https://natashaskitchen.com/wp-content/uploads/2020/03/Pan-Seared-Steak-4-728x1092.jpg"
+					style="width: 30%"  alt="NY Strip">
+			</div>
+
+		
+			</div>
+		</div>
+		<br>
+
+		<!-- The dots/circles -->
+		<div style="text-align: center">
+			<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
+				onclick="currentSlide(2)"></span> <span class="dot"
+				onclick="currentSlide(3)"></span>
+				
+				
+				</div>
+	</main>
+				</html>
