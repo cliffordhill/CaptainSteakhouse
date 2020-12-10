@@ -47,8 +47,6 @@ public class SteakhouseServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		// depending on ending url path, will redirect our servlet to complete
-		// one of the actions in the switch case below
 		String action = request.getServletPath();
 		
 		switch (action) {
