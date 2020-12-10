@@ -1,11 +1,12 @@
 package com.cognixia.jump.steakhouse.connection;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+//import java.io.FileInputStream;
+//import java.io.IOException;
+//import java.util.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
+
 
 public class ConnManager {
 
@@ -30,8 +31,6 @@ public class ConnManager {
 //		String url = props.getProperty("url");
 //		String username = props.getProperty("username");
 //		String password = props.getProperty("password");
-		
-
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -70,7 +69,5 @@ public class ConnManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
