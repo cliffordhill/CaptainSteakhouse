@@ -11,26 +11,33 @@ public class ConnManager {
 
 	private static Connection connection = null;
 
+	private static final String URL = "jdbc:mysql://den1.mysql6.gear.host/captainstkhouse";
+	private static final String USERNAME = "captainstkhouse";
+	private static final String PASSWORD = "Yb7M1!DMyE3-";
+	
 	private static void makeConnection() {
 
-		Properties props = new Properties();
+//		Properties props = new Properties();
+//
+//		try {
+//			props.load(new FileInputStream("resources/config.properties"));
+//			System.out.println("config.properties loaded.");
+//		} catch (IOException e) {
+//			System.out.println("Couldn't load .properties file");
+//			e.printStackTrace();
+//		}
+//
+//		String url = props.getProperty("url");
+//		String username = props.getProperty("username");
+//		String password = props.getProperty("password");
+		
+
 
 		try {
-			props.load(new FileInputStream("resources/config.properties"));
-			System.out.println("config.properties loaded.");
-		} catch (IOException e) {
-			System.out.println("Couldn't load .properties file");
-			e.printStackTrace();
-		}
-
-		String url = props.getProperty("url");
-		String username = props.getProperty("username");
-		String password = props.getProperty("password");
-
-		try {
-			connection = DriverManager.getConnection(url, username, password);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			System.out.println("DB connection login passed.");
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println("DB connection login failed");
 		}
 	}
