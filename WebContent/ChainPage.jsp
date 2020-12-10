@@ -19,12 +19,9 @@
 		<div class="dropdown">
 			<button class="dropbtn">Locations</button>
 			<div class="dropdown-content">
-				<a href="#chainpage"> <% getbyattribute  %>
-				</a> <a href="#chainpage"> <% getbyattribute  %>
-				</a> <a href="#chainpage"> <% getbyattribute  %>
-				</a> <a href="#chainpage"> <% getbyattribute  %>
-				</a> <a href="#chainpage"> <% getbyattribute  %>
-				</a>
+				<a href="#chainpage"> </a> <a href="#chainpage"> </a> <a
+					href="#chainpage"> </a> <a href="#chainpage"> </a> <a
+					href="#chainpage"> </a>
 			</div>
 		</div>
 
@@ -38,19 +35,14 @@
 	<!-- START OF MAIN PAGE CONTENT -->
 	<main>
 
-		<h1>
-			<%location.getCity();%>, <%location.getState();%>
-		</h1>
+		<h1></h1>
 
 
 		<p>
-			<br>Chef <%chef.getFirst_Name();%> <%chef.getLast_Name();%>
-			<br><%location.getAddress();%>
-			<br><%location.getCity();%>, <%location.getState();%> <%location.getZip();%>
-			<br><%location.getPhone();%>
+			<br> <br> <br> <br>
 		</p>
 		<h2 style="text-align: center">Menu</h2>
-		
+
 		<div class="container">
 			<table>
 				<thead>
@@ -63,7 +55,7 @@
 						<td><c:out value="${ product.cost }" /></td>
 						<td><a href="edit?id=<c:out value='${ product.id }' />">
 								<button class="btn btn-primary">Edit</button>
-						</a>&nbsp; 
+						</a>&nbsp;
 						<td><a href="edit?id=<c:out value='${ product.id }' />">
 								<button class="btn btn-danger">Delete</button>
 						</a></td>
@@ -75,7 +67,7 @@
 					<h2>Dessert</h2>
 			-->
 		</div>
-		
+
 		<section class="row">
 			<article id="article1" class="col-8">
 				<!-- Inline styling - highest precedence -->

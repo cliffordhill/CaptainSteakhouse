@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cognixia.jump.connection.ConnectionManager;
 import com.cognixia.jump.steakhouse.connection.ConnManager;
 import com.cognixia.jump.steakhouse.dao.chef.ChefDAO;
 import com.cognixia.jump.steakhouse.dao.location.LocationDAO;
@@ -49,8 +48,11 @@ public class SteakhouseServlet extends HttpServlet {
 		String action = request.getServletPath();
 		
 		switch (action) {
-		case "/list":
-			listMenu(request, response);
+		case "/account":
+			account(request, response);
+			break;
+		case "/location":
+			location(request, response);
 			break;
 		case "/deleteMenuItem":
 			deleteMenuItem(request, response);
@@ -101,5 +103,4 @@ public class SteakhouseServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
 }
