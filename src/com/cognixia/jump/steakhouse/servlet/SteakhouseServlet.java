@@ -123,7 +123,7 @@ public class SteakhouseServlet extends HttpServlet {
 			deleteUser(request, response);
 			break;
 		default:  // default will just go to our index.jsp page
-			response.sendRedirect("/CaptainSteakHouse");
+			response.sendRedirect("/CaptainSteakHouseProject");
 			break;
 		}
 	}
@@ -185,7 +185,7 @@ public class SteakhouseServlet extends HttpServlet {
 			System.out.println("Updated Location ID#" + location_id + " as\n" + location);
 		};
 		
-		response.sendRedirect("/CaptainSteakHouse");
+		response.sendRedirect("list-locations");
 		
 	}
 	

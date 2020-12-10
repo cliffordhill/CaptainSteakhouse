@@ -46,10 +46,10 @@
 					<c:out value="${ location.phone }" />
 				</td>
 				<td>
-					<a href="edit?id=<c:out value='${ location.id }' />">
+					<a href="edit_location?id=<c:out value='${ location.id }' />">
 						<button class="btn btn-primary">Edit</button>
 					</a>&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="delete?id=<c:out value='${ location.id }' />">
+					<a href="delete_location?id=<c:out value='${ location.id }' />">
 						<button class="btn btn-danger">Delete</button>
 					</a>
 				</td>

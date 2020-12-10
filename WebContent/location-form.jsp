@@ -7,65 +7,66 @@
 	<div class="card-body">
 
 		<%-- will select the form we use, update or insert --%>
-		<c:if test="${ product != null }">
-			<form action="update" method="get">
+		<c:if test="${ location != null }">
+			<form action="update_location" method="get">
 			<h1>Update Location</h1>
 		</c:if>
 
-		<c:if test="${ product == null }">
-			<form action="insert" method="get">
+		<c:if test="${ location == null }">
+			<form action="/insert_location" method="get">
 			<h1>Create Location</h1>
 		</c:if>
 				
 				
 		<%-- hidden input we can use to pass in a value we want --%>
-		<c:if test="${product != null}">
-			<input type="hidden" name="id" value="<c:out value='${location.id}' />" />
+		<c:if test="${location != null}">
+			<input type="hidden" name="location_id" value="<c:out value='${location.id}' />" />
 		</c:if>
 				
 		<!-- item field -->
-		<fieldset class="form-group">
 					
-			<label>Item</label>
+		
+		<fieldset class="form-group">
+			<label>Name</label>
 			<input type="text" value="<c:out value='${ location.name }'/>" 
-				class="form-control" name="item" required>
+				class="form-control" name="name" required>
 					
 		</fieldset>
 				
 		<fieldset class="form-group">
 					
-			<label>Quantity</label>
-			<input type="number" value="<c:out value='${ location.address }'/>" 
-				class="form-control" name="qty" required>
+			<label>Address</label>
+			<input type="text" value="<c:out value='${ location.address }'/>" 
+				class="form-control" name="address" required>
 					
 		</fieldset>
 				
 		<fieldset class="form-group">
 					
-			<label>Description</label>
+			<label>City</label>
 			<input type="text" value="<c:out value='${ location.city }'/>" 
-				class="form-control" name="description" required>
+				class="form-control" name="city" required>
 					
 		</fieldset>
 		<fieldset class="form-group">
 					
-			<label>Description</label>
+			<label>State</label>
 			<input type="text" value="<c:out value='${ location.state }'/>" 
-				class="form-control" name="description" required>
+				class="form-control" name="state" required>
 					
 		</fieldset>
 		<fieldset class="form-group">
 					
-			<label>Description</label>
+			<label>Zip Code</label>
 			<input type="number" value="<c:out value='${ location.zip }'/>" 
-				class="form-control" name="description" required>
+				class="form-control" name="zip" required>
 					
 		</fieldset>
 		<fieldset class="form-group">
 					
-			<label>Description</label>
+			<label>Phone Number</label>
 			<input type="text" value="<c:out value='${ location.phone }'/>" 
-				class="form-control" name="description" required>
+				class="form-control" name="phone" required>
 					
 		</fieldset>
 				
