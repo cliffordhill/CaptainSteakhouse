@@ -20,13 +20,11 @@ public class ChefDAO implements DAO<Chef> {
 		try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("select * from chef");) {
 			List<Chef> chefTable = new ArrayList<>();
 			while (rs.next()) {
-				// Getting SQL Attributes for each Tuple
 				int index = rs.getInt("chef_id");
 				String firstName = rs.getString("first_name");
 				String lastName = rs.getString("last_name");
 				int location = rs.getInt("location_id");
 
-				// Make equivalent Java Bean
 				Chef chef = new Chef(index, firstName, lastName, location);
 				chefTable.add(chef);
 			}
