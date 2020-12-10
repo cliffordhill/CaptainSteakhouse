@@ -2,19 +2,19 @@
 
 <div class="container">
 
-	<h1>Product Form</h1>
+	<h1>Location Form</h1>
 	
 	<div class="card-body">
 
 		<%-- will select the form we use, update or insert --%>
 		<c:if test="${ product != null }">
 			<form action="update" method="get">
-			<h1>Update Product</h1>
+			<h1>Update Location</h1>
 		</c:if>
 
 		<c:if test="${ product == null }">
 			<form action="insert" method="get">
-			<h1>Create Product</h1>
+			<h1>Create Location</h1>
 		</c:if>
 				
 				
@@ -27,7 +27,7 @@
 		<fieldset class="form-group">
 					
 			<label>Item</label>
-			<input type="text" value="<c:out value='${ location.item }'/>" 
+			<input type="text" value="<c:out value='${ location.name }'/>" 
 				class="form-control" name="item" required>
 					
 		</fieldset>
@@ -35,7 +35,7 @@
 		<fieldset class="form-group">
 					
 			<label>Quantity</label>
-			<input type="number" value="<c:out value='${ location.qty }'/>" 
+			<input type="number" value="<c:out value='${ location.address }'/>" 
 				class="form-control" name="qty" required>
 					
 		</fieldset>
@@ -43,7 +43,28 @@
 		<fieldset class="form-group">
 					
 			<label>Description</label>
-			<input type="text" value="<c:out value='${ location.description }'/>" 
+			<input type="text" value="<c:out value='${ location.city }'/>" 
+				class="form-control" name="description" required>
+					
+		</fieldset>
+		<fieldset class="form-group">
+					
+			<label>Description</label>
+			<input type="text" value="<c:out value='${ location.state }'/>" 
+				class="form-control" name="description" required>
+					
+		</fieldset>
+		<fieldset class="form-group">
+					
+			<label>Description</label>
+			<input type="number" value="<c:out value='${ location.zip }'/>" 
+				class="form-control" name="description" required>
+					
+		</fieldset>
+		<fieldset class="form-group">
+					
+			<label>Description</label>
+			<input type="text" value="<c:out value='${ location.phone }'/>" 
 				class="form-control" name="description" required>
 					
 		</fieldset>
