@@ -125,4 +125,25 @@ public class LocationDAO implements DAO<Location> {
 		}
 		return false;
 	}
+	
+	public String getCityState(int id) {
+		
+		String query = "select * from location where location_id = ?";
+		
+		try (PreparedStatement pstmt = conn.prepareStatement(query);) {
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+
+			String city = rs.getString("city");
+			String state = rs.getString("state");
+
+			return city + ", " + state;
+			
+		} catch (SQLException e) {
+			System.out.println("Location with id= " + id + " not found.");
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

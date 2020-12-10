@@ -47,6 +47,12 @@ public class Location {
 		this.location_id = location_id;
 	}
 	
+	public Location(String city, String state) {
+		super();
+		this.city = city;
+		this.state = state;
+	}
+	
 	public Location(int location_id) {
 		super();
 		this.location_id = location_id;
