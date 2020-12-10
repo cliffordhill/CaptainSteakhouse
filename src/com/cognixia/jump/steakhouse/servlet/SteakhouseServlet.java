@@ -214,7 +214,7 @@ public class SteakhouseServlet extends HttpServlet {
 				System.out.println("Created Location" + " as\n" + location);
 			};
 			
-			response.sendRedirect("/CaptainSteakHouseProject");
+			response.sendRedirect("list_locations");
 			
 		}
 	

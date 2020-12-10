@@ -19,6 +19,7 @@
 				<th scope="col">State</th>
 				<th scope="col">Zip</th>
 				<th scope="col">Phone</th>
+				<th scope="col"></th>
 			</tr>
 		</thead>
 

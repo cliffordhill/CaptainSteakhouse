@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Product Catalog</title>
+<title>Captain's Steakhouse</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -15,7 +15,7 @@
 
 <header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  		<a class="navbar-brand" href="<%= request.getContextPath() %>/">Product Catalog</a>
+  		<a class="navbar-brand" href="<%= request.getContextPath() %>/">Captain' Steakhouse</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="navbar-toggler-icon"></span>
   		</button>
@@ -27,8 +27,15 @@
 		        	<a class="nav-link" href="<%= request.getContextPath() %>/list_locations">Locations</a>
 		      	</li>
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="<%= request.getContextPath() %>/new">Add (Don't click me or else...)</a>
+		        	<a class="nav-link" href="<%= request.getContextPath() %>/list_menu">Menu</a>
 		      	</li>
+		      	<li class="nav-item">
+		        	<a class="nav-link" href="<%= request.getContextPath() %>/list_chefs">Chef</a>
+		      	</li>
+		      	<li class="nav-item">
+		        	<a class="nav-link" href="<%= request.getContextPath() %>/list_users">Users</a>
+		      	</li>
+		      	
 		      	
 		    </ul>
 		    
